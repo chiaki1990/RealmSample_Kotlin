@@ -44,7 +44,7 @@ realm.close()
 val realm = Realm.getDefaultInstance()
 
 //read
-val results:RealmResults<MyModel> = realm.where(MyModel::class.java).findall().sort(MyModel::myField1.name)
+val results:RealmResults<MyModel> = realm.where(MyModel::class.java).findAll().sort(MyModel::myField1.name)
 
 //Realmインスタンスを開放する
 realm.close()
@@ -54,6 +54,16 @@ realm.close()
 println(results[2].myField1)
 */
 
+
+//distinctを使った場合のクエリ生成方法
+val results:RealmResults<MyModel> = realm.where(MyModel::class.java)
+                                         .distinct(MyModel::myField1.name)
+                                         .findAll().sort(MyModel.myField1.name)
+
+
+/*
+注意点は、findAll()メソッド後にdistinct()メソッドをつなぐとエラーが出るから、distinct().findAll()とつなげるようにする。
+*/
 
 /////////////////////////////////////////////////////////////////////////////
 
