@@ -73,7 +73,7 @@ val results:RealmResults<MyModel> = realm.where(MyModel::class.java)
 val realm = Realm.getDefaultInstance()
 
 //read
-val myModelObj = realm.where(MyModel::class.java).equalTo(MyModel::myField1.name, "フィールド１").findfirst()
+val myModelObj = realm.where(MyModel::class.java).equalTo(MyModel::myField1.name, "フィールド１").findFirst()
 
 //Realmインスタンスを開放する
 realm.close()
